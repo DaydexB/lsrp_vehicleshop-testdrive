@@ -16,8 +16,8 @@ testdrive.initiate = function(shopIndex, selected, scrollIndex, testOptions)
         cancel = true
     }) == 'confirm' then
         local vehicleModel = CFG_VEH_DATA.VEHICLE_MODEL
-        local coords = vector3(-972.8182, -3354.9409, 13.9444) 
-        local heading = 50.20 
+        local coords = Config.TestDriveSpawnVehicleLocation
+        local heading = Config.TestDriveSpawnHeading
         local vehicle = CreateVehicle(vehicleModel, coords.x, coords.y, coords.z, heading, true, false)
         if vehicle ~= 0 then
             teleportPlayerIntoVehicle(vehicle)
@@ -35,8 +35,8 @@ end
 function testdrive.startTestDrive(vehicle)
     local ped = PlayerPedId()
     SetEntityVisible(ped, true)
-    local coords = Config.TestDriveLocation
-    local heading = Config.TestDriveVehicleHeading
+    local coords = Config.TestDriveFinishedLocation
+    local heading = Config.TestDriveFinishedHeading
     local duration = Config.TestDriveTime
 
     Citizen.CreateThread(function()
@@ -44,6 +44,7 @@ function testdrive.startTestDrive(vehicle)
             Citizen.Wait(100)
             duration = duration - 0.1 
         end
+        DisableControlAction(1, 23, true)
         if duration <= 0 then
             DeleteEntity(vehicle)
             SetEntityCoords(ped, coords.x, coords.y, coords.z, true, false, false, false)
