@@ -8,8 +8,8 @@
 2. go to client/modules/testdrive.lua
 3. Replace your testdrive.lua with mine
 4. Copy the Config.lua and put them in your shared/config.lua NOTE DO NOT REPLACE IT JUST PASTE IT
+5. Also if your on QBCore then go to testdrive.lua and replace or remove ESX.ShowNotification with QBCore.Functions.Notify(text, textype, length) obvisouly change the parameters
 
-# PLEASE NOTE
+NOTE
 i did not make this vehicleshop script i just created the test drive functionality
-also if your on QBCore then go to testdrive.lua and replace or remove ESX.ShowNotification with QBCore.Functions.Notify(text, textype, length) obvisouly change the parameters
 
